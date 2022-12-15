@@ -11,6 +11,7 @@ public class Main {
             Connection connection = DbUtil.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+//            ss
         }
     }
 }
