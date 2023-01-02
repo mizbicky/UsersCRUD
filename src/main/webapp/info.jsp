@@ -10,7 +10,7 @@
 <html>
 <head>
     <link href="theme/css/sb-admin-2.min.css" rel="stylesheet">
-    <title>List</title>
+    <title>Informacje o użytkowniku</title>
 </head>
 <body>
 <jsp:include page="index.html"></jsp:include>
@@ -22,6 +22,11 @@
     <a href="/remove?id=${user.id}">
         <button class="btn">
             Usuń
+        </button>
+    </a>
+    <a href="/edit?id=${user.id}">
+        <button class="btn">
+            Edytuj
         </button>
     </a>
     <br/>

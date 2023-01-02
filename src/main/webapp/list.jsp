@@ -10,28 +10,37 @@
 <html>
 <head>
     <link href="theme/css/sb-admin-2.min.css" rel="stylesheet">
-    <title>List</title>
+    <title>Lista użytkowników</title>
 </head>
 <body>
 <jsp:include page="index.html"></jsp:include>
 <jsp:include page="footerAdd.html"></jsp:include>
 <h5>Lista użytkowników</h5>
+<ol>
+    <c:forEach var="user" items="${users}">
 
-<c:forEach var="user" items="${users}">
-    Id: ${user.id} Username: ${user.userName} Email: ${user.email}
-    <a href="/remove?id=${user.id}">
-        <button class="btn">
-            Usuń
-        </button>
-    </a>
-    <a href="/info?id=${user.id}">
-        <button class="btn">
-            Pokaż
-        </button>
-    </a>
-    <br/>
-</c:forEach>
 
+        <li>
+            Username: ${user.userName} Email: ${user.email}
+            <a href="/remove?id=${user.id}">
+                <button class="btn">
+                    Usuń
+                </button>
+            </a>
+            <a href="/info?id=${user.id}">
+                <button class="btn">
+                    Pokaż
+                </button>
+            </a>
+            <a href="/edit?id=${user.id}">
+                <button class="btn">
+                    Edytuj
+                </button>
+            </a>
+            <br/>
+        </li>
+    </c:forEach>
+</ol>
 <br/>
 </body>
 </html>

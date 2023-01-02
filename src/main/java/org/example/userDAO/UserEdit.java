@@ -1,4 +1,4 @@
-package org.example.user;
+package org.example.userDAO;
 
 import org.example.DbUtil.DbUtil;
 
@@ -8,17 +8,27 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
 @WebServlet("/edit")
-public class UsersEdit extends HttpServlet {
+public class UserEdit extends HttpServlet {
 
     private static final String EDIT_QUERY =
             "UPDATE users SET username = ?, email = ? WHERE id = ?";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        UserDao user = new UserDao();
+        User read = user.read(Integer.parseInt(id));
+        request.setAttribute("user", read);
+        getServletContext().getRequestDispatcher("/edit.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
@@ -33,10 +43,5 @@ public class UsersEdit extends HttpServlet {
             throw new RuntimeException(e);
         }
         response.sendRedirect("/list");
-    }
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }

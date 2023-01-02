@@ -8,20 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Edytuj użytkownika</title>
 </head>
 <body>
 <jsp:include page="index.html"></jsp:include>
 <jsp:include page="footerList.html"></jsp:include>
 <h5>Edytuj użytkownika</h5>
-<form method="get" action="/edit">
-  Id użytkownika<br/>
-  <input type="text" name="id"><br/>
-  Nazwa użytkownika <br/>
-  <input type="text" name="username"><br/>
-  E-mail <br/>
-  <input type="text" name="email"><br/>
-  <button type="submit">Zapisz</button>
+<form method="post" action="/edit">
+    <input type="hidden" name="id" value=${user.id}> <br/>
+    Nazwa użytkownika <br/>
+    <input type="text" name="username"><br/>
+    E-mail <br/>
+    <input type="text" name="email"><br/>
+    Password <br/>
+    <input type="password" name="password"> <br/>
+    <button type="submit">Zapisz</button>
 
 </form>
 </body>
